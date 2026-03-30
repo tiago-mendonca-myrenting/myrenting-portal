@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 191 45% 24%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 158 85% 59%;
+    --secondary-foreground: 152 54% 13%;
+    --accent: 109 66% 51%;
+    --accent-foreground: 0 0% 0%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 191 45% 24%;
+    --radius: 0.75rem;
+    
+    /* My Renting Brand Colors */
+    --mr-primary: #224c57;
+    --mr-secondary: #40eea4;
+    --mr-accent: #4ad334;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 211, 52, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(74, 211, 52, 0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Status colors */
+.status-submetido { @apply bg-blue-100 text-blue-700 border-blue-200; }
+.status-em_verificacao { @apply bg-yellow-100 text-yellow-700 border-yellow-200; }
+.status-aprovado { @apply bg-green-100 text-green-700 border-green-200; }
+.status-rejeitado { @apply bg-red-100 text-red-700 border-red-200; }
+.status-precisa_de_mais_info { @apply bg-orange-100 text-orange-700 border-orange-200; }
+.status-pendente { @apply bg-slate-100 text-slate-600 border-slate-200; }
+
+.status-por_iniciar { @apply bg-slate-100 text-slate-600 border-slate-200; }
+.status-a_aguardar_documentos { @apply bg-yellow-100 text-yellow-700 border-yellow-200; }
+.status-em_analise { @apply bg-blue-100 text-blue-700 border-blue-200; }
+.status-a_aguardar_resposta_cliente { @apply bg-orange-100 text-orange-700 border-orange-200; }
+.status-concluido { @apply bg-green-100 text-green-700 border-green-200; }
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-[#224c57] text-white hover:bg-[#224c57]/90 transition-all duration-200 active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-[#40eea4] text-[#0f3522] hover:bg-[#40eea4]/80 transition-all duration-200 active:scale-95;
+}
+
+.btn-accent {
+  @apply bg-[#4ad334] text-black hover:bg-[#4ad334]/80 transition-all duration-200 active:scale-95;
+}
+
+/* Card hover effects */
+.card-interactive {
+  @apply transition-all duration-300 hover:shadow-lg hover:border-[#40eea4];
+}
+
+/* Timeline styles */
+.timeline-step {
+  @apply relative pl-8 pb-8 border-l-2 border-slate-200 last:border-l-0 last:pb-0;
+}
+
+.timeline-step::before {
+  content: '';
+  @apply absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-slate-200 border-2 border-white;
+}
+
+.timeline-step.active::before {
+  @apply bg-[#40eea4];
+}
+
+.timeline-step.completed::before {
+  @apply bg-[#4ad334];
+}
+
+/* Debug wrapper */
+@layer base {
+  [data-debug-wrapper="true"] {
+    display: contents !important;
+  }
+}
